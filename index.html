@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Tip calculator</title>
+	</head>
+	<body>
+		<main class="main">
+			<div class="erroDiv" data-js="erroDiv">
+				<p>Digite apenas numeros positivos</p>
+				<button class="closeBtn" data-js="closeBtn">X</button>
+			</div>
+			<section class="caculator">
+				<form action="">
+					<div class="bill">
+						<p class="label">Bill</p>
+
+						<div class="billDivInput inputWithIcon">
+							<img
+								src="./images/icon-dollar.svg"
+								alt="icon-dollar"
+							/>
+							<input
+								type="number"
+								id="billInput"
+								data-js="billInput"
+								name="billInput"
+								placeholder="0"
+							/>
+						</div>
+					</div>
+					<fieldset>
+						<legend class="label">Select Tip %</legend>
+						<button>5%</button>
+						<button>10%</button>
+						<button>15%</button>
+						<button>25%</button>
+						<button>50%</button>
+						<input type="number" placeholder="Custom" />
+					</fieldset>
+					<div class="numberOfPeople">
+						<p class="label">Number of People</p>
+
+						<div class="divInputNumberOfPeople inputWithIcon">
+							<img
+								src="./images/icon-person.svg"
+								alt="icon-person"
+							/>
+							<input
+								type="number"
+								data-js="numberOfPeopleInput"
+								id="numberPeople"
+								name="numberPeople"
+								placeholder="0"
+							/>
+						</div>
+					</div>
+				</form>
+			</section>
+
+			<section class="resultSection">
+				<div class="textResultDiv">
+					<div class="text tipAmountDiv">
+						<p class="textResult">
+							Tip Amount <span>/ person</span>
+						</p>
+						<p class="paragraphValue valueTipAmount">$0.00</p>
+					</div>
+					<div class="text totalDiv">
+						<p class="textResult">Total <span>/ person</span></p>
+						<p class="paragraphValue totalValue">$0.00</p>
+					</div>
+				</div>
+				<button>RESET</button>
+			</section>
+		</main>
+		<script src="./app.js"></script>
+	</body>
+</html>

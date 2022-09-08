@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-sizing: border-box;
+	font-family: "Space Mono", monospace;
+}
+
+::selection {
+	color: hsl(183, 100%, 15%);
+	background-color: hsl(172, 67%, 45%);
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background-color: hsl(185, 41%, 84%);
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input {
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+.label {
+	color: hsl(186, 14%, 43%);
+	margin-bottom: 10px;
+	font-size: 1.1em;
+}
+
+.inputWithIcon {
+	display: flex;
+	align-items: center;
+	height: 40px;
+	border-radius: 5px;
+	justify-content: space-between;
+	width: 100%;
+	padding: 10px 10px;
+	background-color: hsl(189, 41%, 97%);
+	/* background-color: chocolate; */
+	margin-top: 5px;
+}
+
+.inputWithIcon input {
+	text-align: right;
+	background-color: transparent;
+	color: hsl(183, 100%, 15%);
+	font-size: 1.2em;
+}
+
+.inputWithIcon input::placeholder {
+	color: hsl(186, 14%, 43%);
+}
+
+.main {
+	position: relative;
+	height: 450px;
+	width: 800px;
+	display: flex;
+	padding: 30px;
+	border-radius: 15px;
+	align-items: center;
+	justify-content: space-between;
+	background-color: hsl(0, 0%, 100%);
+}
+
+.main .erroDiv {
+	left: 0;
+	top: 0;
+	z-index: -1;
+
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30px;
+	font-size: 1.2em;
+	position: absolute;
+	width: 100%;
+	height: 70px;
+	background-color: hsl(0, 0%, 100%);
+	color: hsl(183, 100%, 15%);
+	transition: 0.6s;
+}
+
+.main .erroDiv .closeBtn {
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 1.1em;
+	color: hsl(183, 100%, 15%);
+}
+
+.main .caculator {
+	height: 100%;
+}
+
+.main .caculator form {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.main .caculator form fieldset {
+	display: grid;
+	grid-template-columns: repeat(3, 90px);
+	gap: 10px;
+}
+
+.main .caculator form fieldset button {
+	font-size: 1.2em;
+	background-color: hsl(183, 100%, 15%);
+	color: hsl(0, 0%, 100%);
+	height: 45px;
+	border-radius: 5px;
+	transition: color 0.8s;
+}
+
+.main .caculator form fieldset button:hover {
+	background-color: hsl(172, 67%, 45%);
+	color: hsl(183, 100%, 15%);
+}
+
+.main .caculator form fieldset input {
+	font-size: 1.2em;
+	text-align: center;
+	background-color: hsl(189, 41%, 97%);
+	/* background-color: brown; */
+	color: hsl(183, 100%, 15%);
+	border-radius: 5px;
+}
+
+/* .main .caculator form fieldset legend {
+	margin-bottom: 10px;
+} */
+
+.main .caculator form fieldset input::placeholder {
+	color: hsl(186, 14%, 43%);
+}
+
+/* ////////////////////////////////// */
+
+.resultSection {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	border-radius: 15px;
+}
+
+.resultSection button {
+	width: 100%;
+	height: 45px;
+	border-radius: 7px;
+	color: hsl(183, 100%, 15%);
+	font-size: 1.2em;
+	background-color: hsl(185, 41%, 84%);
+	opacity: 0.2;
+}
+
+.resultSection {
+	min-width: 350px;
+	padding: 30px;
+	height: 100%;
+	background-color: hsl(183, 100%, 15%);
+}
+
+.resultSection .text {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+.resultSection .text .paragraphValue {
+	color: hsl(172, 67%, 45%);
+	font-size: 2.5em;
+}
+
+.resultSection .textResultDiv .tipAmountDiv {
+	margin-bottom: 30px;
+}
+
+.resultSection .textResultDiv .textResult {
+	color: hsl(0, 0%, 100%);
+	font-size: 1.2em;
+}
+
+.resultSection .textResultDiv .textResult span {
+	font-size: 0.8em;
+	display: block;
+	color: hsl(186, 14%, 43%);
+}
