@@ -127,6 +127,11 @@ button {
 	transition: color 0.8s;
 }
 
+.main .caculator form fieldset button[checked="true"] {
+	background-color: hsl(172, 67%, 45%);
+	color: hsl(183, 100%, 15%);
+}
+
 .main .caculator form fieldset button:hover {
 	background-color: hsl(172, 67%, 45%);
 	color: hsl(183, 100%, 15%);

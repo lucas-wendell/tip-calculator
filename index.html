@@ -14,7 +14,7 @@
 				<button class="closeBtn" data-js="closeBtn">X</button>
 			</div>
 			<section class="caculator">
-				<form action="">
+				<form data-js="form" action="">
 					<div class="bill">
 						<p class="label">Bill</p>
 
@@ -32,14 +32,28 @@
 							/>
 						</div>
 					</div>
-					<fieldset>
+					<fieldset data-js="fieldsetSelectTip">
 						<legend class="label">Select Tip %</legend>
-						<button>5%</button>
-						<button>10%</button>
-						<button>15%</button>
-						<button>25%</button>
-						<button>50%</button>
-						<input type="number" placeholder="Custom" />
+						<button data-js="tipButton" checked="true" value="5">
+							5%
+						</button>
+						<button data-js="tipButton" checked="false" value="10">
+							10%
+						</button>
+						<button data-js="tipButton" checked="false" value="15">
+							15%
+						</button>
+						<button data-js="tipButton" checked="false" value="25">
+							25%
+						</button>
+						<button data-js="tipButton" checked="false" value="50">
+							50%
+						</button>
+						<input
+							data-js="tipInput"
+							type="number"
+							placeholder="Custom"
+						/>
 					</fieldset>
 					<div class="numberOfPeople">
 						<p class="label">Number of People</p>
@@ -67,11 +81,21 @@
 						<p class="textResult">
 							Tip Amount <span>/ person</span>
 						</p>
-						<p class="paragraphValue valueTipAmount">$0.00</p>
+						<p
+							data-js="tipAmountParagrph"
+							class="paragraphValue valueTipAmount"
+						>
+							$0.00
+						</p>
 					</div>
 					<div class="text totalDiv">
 						<p class="textResult">Total <span>/ person</span></p>
-						<p class="paragraphValue totalValue">$0.00</p>
+						<p
+							data-js="totalValueParagraph"
+							class="paragraphValue totalValue"
+						>
+							$0.00
+						</p>
 					</div>
 				</div>
 				<button>RESET</button>
