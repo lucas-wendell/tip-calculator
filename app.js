@@ -19,13 +19,72 @@ const totalValueParagraph = document.querySelector(
 );
 
 const tipInput = document.querySelector('[data-js="tipInput"]');
-
 const resetButton = document.querySelector('[data-js="resetButton"]');
 
 const parametersToCaculateTip = {
 	bill: 0,
 	tipPercentage: 5,
 	numberOfPeople: 1,
+};
+
+const actions = {
+	throwError(target) {
+		if (target.value < 0) {
+			target.blur();
+			reset();
+			return showDivError(target);
+		}
+	},
+
+	atualizarParametroDeCalculo(property, value) {
+		parametersToCaculateTip[property] = Number(value);
+		calculateTip(parametersToCaculateTip);
+	},
+
+	button(target) {
+		if (target.getAttribute("checked") === "true") {
+			target.setAttribute("checked", "false");
+		} else {
+			tipButton.forEach(button => {
+				if (button.value !== target.value) {
+					button.setAttribute("checked", "false");
+				}
+			});
+			tipInput.value = "";
+			parametersToCaculateTip.tipPercentage = Number(target.value);
+
+			calculateTip(parametersToCaculateTip);
+			target.setAttribute("checked", "true");
+		}
+	},
+
+	bill(target) {
+		this.throwError(target);
+		if (target.value !== "") {
+			resetButton.removeAttribute("disabled");
+		}
+
+		this.atualizarParametroDeCalculo(target.name, target.value);
+	},
+
+	numberOfPeople(target) {
+		this.throwError(target);
+
+		this.atualizarParametroDeCalculo(
+			target.name,
+			Number(target.value === "" ? 1 : target.value)
+		);
+	},
+
+	tipPercentage(target) {
+		this.throwError(target);
+		tipButton.forEach(button => button.setAttribute("checked", "false"));
+
+		this.atualizarParametroDeCalculo(
+			target.name,
+			Number(target.value === "" ? 1 : target.value)
+		);
+	},
 };
 
 const addCalculationValueInDOM = (tipAmount, total) => {
@@ -46,6 +105,7 @@ const reset = () => {
 
 	billInput.value = "";
 	numberOfPeopleInput.value = "";
+	tipInput.value = "";
 
 	tipButton.forEach(button => {
 		if (button.value === "5") {
@@ -68,70 +128,35 @@ const showDivError = target => {
 	target.value = "";
 };
 
-closeBtn.addEventListener("click", () => {
+const hideDivError = () => {
+	billInput.focus();
 	erroDiv.style.zIndex = "-1";
 	erroDiv.style.top = "0px";
-});
+};
 
-fieldsetSelectTip.addEventListener("click", e => {
-	const target = e.target;
+const accessFunction = (target, funcitonName) => {
+	const func = actions[funcitonName];
+	func?.call(actions, target);
+};
 
-	if (target.tagName === "BUTTON") {
-		if (target.getAttribute("checked") === "true") {
-			target.setAttribute("checked", "false");
-		} else {
-			tipButton.forEach(button => {
-				if (button.value !== target.value) {
-					button.setAttribute("checked", "false");
-				}
-			});
-			tipInput.value = "";
-			parametersToCaculateTip.tipPercentage = Number(target.value);
+tipInput.addEventListener("input", e =>
+	accessFunction(e.target, e.target.name)
+);
 
-			calculateTip(parametersToCaculateTip);
-			target.setAttribute("checked", "true");
-		}
-	}
-});
+fieldsetSelectTip.addEventListener("click", e =>
+	accessFunction(e.target, e.target.name)
+);
 
+numberOfPeopleInput.addEventListener("input", e =>
+	accessFunction(e.target, e.target.name)
+);
+
+billInput.addEventListener("input", e =>
+	accessFunction(e.target, e.target.name)
+);
+
+closeBtn.addEventListener("click", hideDivError);
 resetButton.addEventListener("click", reset);
-
-tipInput.addEventListener("input", e => {
-	const target = e.target;
-	if (target.value < 0) {
-		return showDivError(target);
-	}
-
-	tipButton.forEach(button => button.setAttribute("checked", "false"));
-	parametersToCaculateTip.tipPercentage = Number(target.value);
-	calculateTip(parametersToCaculateTip);
-});
-
-numberOfPeopleInput.addEventListener("input", e => {
-	const target = e.target;
-	if (target.value < 0) {
-		return showDivError(target);
-	}
-
-	parametersToCaculateTip.numberOfPeople = Number(
-		target.value === "" ? 1 : target.value
-	);
-	calculateTip(parametersToCaculateTip);
-});
-
-billInput.addEventListener("input", e => {
-	const target = e.target;
-	if (target.value < 0) {
-		return showDivError(target);
-	}
-
-	if (target.value !== "") {
-		resetButton.removeAttribute("disabled");
-	}
-	parametersToCaculateTip.bill = Number(target.value);
-	calculateTip(parametersToCaculateTip);
-});
-
 form.addEventListener("submit", e => e.preventDefault());
 
 /*
