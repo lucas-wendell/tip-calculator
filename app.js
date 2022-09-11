@@ -20,6 +20,8 @@ const totalValueParagraph = document.querySelector(
 
 const tipInput = document.querySelector('[data-js="tipInput"]');
 
+const resetButton = document.querySelector('[data-js="resetButton"]');
+
 const parametersToCaculateTip = {
 	bill: 0,
 	tipPercentage: 5,
@@ -36,6 +38,26 @@ const calculateTip = ({ bill, tipPercentage, numberOfPeople }) => {
 	const total = tipAmount / numberOfPeople;
 
 	addCalculationValueInDOM(tipAmount.toFixed(2), total.toFixed(2));
+};
+
+const reset = () => {
+	const zero = Number(0).toFixed(2);
+	resetButton.setAttribute("disabled", "true");
+
+	billInput.value = "";
+	numberOfPeopleInput.value = "";
+
+	tipButton.forEach(button => {
+		if (button.value === "5") {
+			button.setAttribute("checked", "true");
+		} else if (button.value !== "5") {
+			button.setAttribute("checked", "false");
+		}
+	});
+	parametersToCaculateTip.bill = 0;
+	parametersToCaculateTip.tipPercentage = 5;
+	parametersToCaculateTip.numberOfPeople = 1;
+	addCalculationValueInDOM(zero, zero);
 };
 
 const showDivError = target => {
@@ -72,6 +94,8 @@ fieldsetSelectTip.addEventListener("click", e => {
 	}
 });
 
+resetButton.addEventListener("click", reset);
+
 tipInput.addEventListener("input", e => {
 	const target = e.target;
 	if (target.value < 0) {
@@ -89,7 +113,9 @@ numberOfPeopleInput.addEventListener("input", e => {
 		return showDivError(target);
 	}
 
-	parametersToCaculateTip.numberOfPeople = Number(target.value);
+	parametersToCaculateTip.numberOfPeople = Number(
+		target.value === "" ? 1 : target.value
+	);
 	calculateTip(parametersToCaculateTip);
 });
 
@@ -97,6 +123,10 @@ billInput.addEventListener("input", e => {
 	const target = e.target;
 	if (target.value < 0) {
 		return showDivError(target);
+	}
+
+	if (target.value !== "") {
+		resetButton.removeAttribute("disabled");
 	}
 	parametersToCaculateTip.bill = Number(target.value);
 	calculateTip(parametersToCaculateTip);
@@ -107,6 +137,6 @@ form.addEventListener("submit", e => e.preventDefault());
 /*
 	- feita! (Fazer função que calcula a gorjeta)
 	- feita! (Criar função que vai colocar checked nos butões)
-	- Criar função de reset
+	- feita! (Criar função de reset)
 	- Refatorar
 */
