@@ -11,7 +11,7 @@
 		<main class="main">
 			<div class="erroDiv" data-js="erroDiv">
 				<p>Digite apenas numeros positivos</p>
-				<button class="closeBtn" data-js="closeBtn">X</button>
+				<button name="closeBtn" class="closeBtn">X</button>
 			</div>
 			<section class="caculator">
 				<form data-js="form" action="">
@@ -19,15 +19,13 @@
 						<p class="label">Bill</p>
 
 						<div class="billDivInput inputWithIcon">
-							<img
-								src="./images/icon-dollar.svg"
-								alt="icon-dollar"
-							/>
+							<img src="./images/icon-dollar.svg" alt="icon-dollar" />
 							<input
+								property="bill"
 								type="number"
 								id="billInput"
 								data-js="billInput"
-								name="bill"
+								name="billInput"
 								placeholder="0"
 							/>
 						</div>
@@ -35,7 +33,8 @@
 					<fieldset data-js="fieldsetSelectTip">
 						<legend class="label">Select Tip %</legend>
 						<button
-							name="button"
+							name="tipButton"
+							property="tipPercentage"
 							data-js="tipButton"
 							checked="true"
 							value="5"
@@ -43,7 +42,8 @@
 							5%
 						</button>
 						<button
-							name="button"
+							name="tipButton"
+							property="tipPercentage"
 							data-js="tipButton"
 							checked="false"
 							value="10"
@@ -51,7 +51,8 @@
 							10%
 						</button>
 						<button
-							name="button"
+							name="tipButton"
+							property="tipPercentage"
 							data-js="tipButton"
 							checked="false"
 							value="15"
@@ -59,7 +60,8 @@
 							15%
 						</button>
 						<button
-							name="button"
+							name="tipButton"
+							property="tipPercentage"
 							data-js="tipButton"
 							checked="false"
 							value="25"
@@ -67,7 +69,8 @@
 							25%
 						</button>
 						<button
-							name="button"
+							name="tipButton"
+							property="tipPercentage"
 							data-js="tipButton"
 							checked="false"
 							value="50"
@@ -75,8 +78,9 @@
 							50%
 						</button>
 						<input
+							property="tipPercentage"
 							data-js="tipInput"
-							name="tipPercentage"
+							name="tipCustom"
 							type="number"
 							placeholder="Custom"
 						/>
@@ -85,15 +89,13 @@
 						<p class="label">Number of People</p>
 
 						<div class="divInputNumberOfPeople inputWithIcon">
-							<img
-								src="./images/icon-person.svg"
-								alt="icon-person"
-							/>
+							<img src="./images/icon-person.svg" alt="icon-person" />
 							<input
+								property="numberOfPeople"
 								type="number"
 								data-js="numberOfPeopleInput"
 								id="numberPeople"
-								name="numberOfPeople"
+								name="numberOfPeopleInput"
 								placeholder="0"
 							/>
 						</div>
@@ -104,9 +106,7 @@
 			<section class="resultSection">
 				<div class="textResultDiv">
 					<div class="text tipAmountDiv">
-						<p class="textResult">
-							Tip Amount <span>/ person</span>
-						</p>
+						<p class="textResult">Tip Amount <span>/ person</span></p>
 						<p
 							data-js="tipAmountParagrph"
 							class="paragraphValue valueTipAmount"
@@ -116,17 +116,14 @@
 					</div>
 					<div class="text totalDiv">
 						<p class="textResult">Total <span>/ person</span></p>
-						<p
-							data-js="totalValueParagraph"
-							class="paragraphValue totalValue"
-						>
+						<p data-js="totalValueParagraph" class="paragraphValue totalValue">
 							$0.00
 						</p>
 					</div>
 				</div>
-				<button data-js="resetButton" disabled>RESET</button>
+				<button name="resetButton" data-js="resetButton" disabled>RESET</button>
 			</section>
 		</main>
-		<script src="./app.js"></script>
+		<script src="./app.js" type="module"></script>
 	</body>
 </html>
