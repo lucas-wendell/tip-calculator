@@ -60,6 +60,16 @@ const calculateTip = ({ bill, tipPercentage, numberOfPeople }) => {
 };
 
 const actions = {
+	getPropertyAndValue(target) {
+		const property = target.getAttribute('property');
+		const value = Number(target.value === '' ? 1 : target.value);
+
+		return {
+			property,
+			value,
+		};
+	},
+
 	closeBtn() {
 		billInput.focus();
 		erroDiv.style.zIndex = '-1';
@@ -86,14 +96,12 @@ const actions = {
 	},
 
 	tipButton(target) {
+		const { property, value } = this.getPropertyAndValue(target);
+
 		deselectButtons();
 		tipInput.value = '';
 
-		this.updateCalculationParameters(
-			target.getAttribute('property'),
-			target.value
-		);
-
+		this.updateCalculationParameters(property, value);
 		target.setAttribute('checked', 'true');
 	},
 
@@ -113,19 +121,16 @@ const actions = {
 	numberOfPeopleInput(target) {
 		if (this.throwError(target)) return;
 
-		const property = target.getAttribute('property');
-		const value = Number(target.value === '' ? 1 : target.value);
+		const { property, value } = this.getPropertyAndValue(target);
 		this.updateCalculationParameters(property, value);
 	},
 
 	tipCustom(target) {
 		if (this.throwError(target)) return;
-		deselectButtons();
+		const { property, value } = this.getPropertyAndValue(target);
 
-		this.updateCalculationParameters(
-			target.property,
-			Number(target.value === '' ? 1 : target.value)
-		);
+		deselectButtons();
+		this.updateCalculationParameters(property, value);
 	},
 
 	resetButton() {
