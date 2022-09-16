@@ -10,7 +10,9 @@ const totalValueParagraph = document.querySelector(
 
 const billInput = document.querySelector('[data-js="billInput"]');
 const erroDiv = document.querySelector('[data-js="erroDiv"]');
-const tipButtons = [...document.querySelectorAll('[data-js="tipButton"]')];
+const tipButtons = Array.from(
+	document.querySelectorAll('[data-js="tipButton"]')
+);
 
 const tipInput = document.querySelector('[data-js="tipInput"]');
 const resetButton = document.querySelector('[data-js="resetButton"]');
@@ -67,8 +69,6 @@ const actions = {
 	showDivError(target) {
 		erroDiv.style.top = '-80px';
 		erroDiv.style.zIndex = '0';
-
-		erroDiv.style.visibility = 'visible';
 		target.value = '';
 	},
 
