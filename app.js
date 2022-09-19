@@ -20,10 +20,29 @@ const form = document.querySelector('[data-js="form"]');
 
 const main = document.querySelector('.main');
 
-const parametersToCaculateTip = {
+let parametersToCaculateTip = {
 	bill: 0,
 	tipPercentage: 5,
 	numberOfPeople: 1,
+};
+
+const resetParametersToCalculateTip = () => {
+	parametersToCaculateTip = {
+		bill: 0,
+		tipPercentage: 5,
+		numberOfPeople: 1,
+	};
+};
+
+const resetInputs = () => {
+	billInput.value = '';
+	numberOfPeopleInput.value = '';
+	tipInput.value = '';
+};
+
+const selectButton = () => {
+	const [button] = tipButtons.filter(button => button.value === '5');
+	button.setAttribute('checked', 'true');
 };
 
 const addCalculationValueInDOM = (tipAmount, total) => {
@@ -34,21 +53,15 @@ const addCalculationValueInDOM = (tipAmount, total) => {
 const deselectButtons = () =>
 	tipButtons.forEach(button => button.setAttribute('checked', 'false'));
 
-const reset = ({ bill, tipPercentage, numberOfPeople }) => {
+const reset = () => {
 	const zero = Number(0).toFixed(2);
 	resetButton.setAttribute('disabled', 'true');
-
-	billInput.value = '';
-	numberOfPeopleInput.value = '';
-	tipInput.value = '';
+	resetInputs();
 
 	deselectButtons();
-	const [button] = tipButtons.filter(button => button.value === '5');
-	button.setAttribute('checked', 'true');
+	selectButton();
 
-	bill = 0;
-	tipPercentage = 5;
-	numberOfPeople = 1;
+	resetParametersToCalculateTip();
 	addCalculationValueInDOM(zero, zero);
 };
 
@@ -134,7 +147,7 @@ const actions = {
 	},
 
 	resetButton() {
-		reset(parametersToCaculateTip);
+		reset();
 	},
 };
 
