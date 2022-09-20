@@ -4,7 +4,7 @@ Projeto feito como objeto de estudo. Feito seguindo o desafio do frontend mento.
 
 ## **O que aprendi com o projeto**
 
-O projeto me trouxe uma ótima visão de como atualizar a pagina imediatamente enquanto o usuário interage com ela. Com o projeto consegui melhorar também minha lógica de programação e minha capacidade de refatorar o código.
+O projeto me trouxe uma ótima visão de como atualizar a página imediatamente enquanto o usuário interage com ela. Com o projeto consegui melhorar também minha lógica de programação e minha capacidade de refatorar o código.
 
 **Desafios do projeto**
 
