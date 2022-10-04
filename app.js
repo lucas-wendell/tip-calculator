@@ -1,24 +1,18 @@
-const numberOfPeopleInput = document.querySelector(
-	'[data-js="numberOfPeopleInput"]'
-);
-const tipAmountParagrph = document.querySelector(
-	'[data-js="tipAmountParagrph"]'
-);
-const totalValueParagraph = document.querySelector(
-	'[data-js="totalValueParagraph"]'
-);
+import { html } from './getDomElements.js';
 
-const billInput = document.querySelector('[data-js="billInput"]');
-const erroDiv = document.querySelector('[data-js="erroDiv"]');
-const tipButtons = Array.from(
-	document.querySelectorAll('[data-js="tipButton"]')
-);
+const numberOfPeopleInput = html.get('[data-js="numberOfPeopleInput"]');
+const tipAmountParagrph = html.get('[data-js="tipAmountParagrph"]');
+const totalValueParagraph = html.get('[data-js="totalValueParagraph"]');
 
-const tipInput = document.querySelector('[data-js="tipInput"]');
-const resetButton = document.querySelector('[data-js="resetButton"]');
-const form = document.querySelector('[data-js="form"]');
+const billInput = html.get('[data-js="billInput"]');
+const erroDiv = html.get('[data-js="erroDiv"]');
+const tipButtons = Array.from(html.getAll('[data-js="tipButton"]'));
 
-const main = document.querySelector('.main');
+const tipInput = html.get('[data-js="tipInput"]');
+const resetButton = html.get('[data-js="resetButton"]');
+const form = html.get('[data-js="form"]');
+
+const main = html.get('.main');
 
 let parametersToCaculateTip = {
 	bill: 0,
