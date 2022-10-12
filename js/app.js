@@ -150,17 +150,19 @@ const accessFunction = (target, funcitonName) => {
 	func?.call(actions, target);
 };
 
-tipInput.addEventListener('input', e =>
-	accessFunction(e.target, e.target.name)
+tipInput.addEventListener('input', ({ target }) =>
+	accessFunction(target, target.name)
 );
 
-numberOfPeopleInput.addEventListener('input', e =>
-	accessFunction(e.target, e.target.name)
+numberOfPeopleInput.addEventListener('input', ({ target }) =>
+	accessFunction(target, target.name)
 );
 
-billInput.addEventListener('input', e =>
-	accessFunction(e.target, e.target.name)
+billInput.addEventListener('input', ({ target }) =>
+	accessFunction(target, target.name)
 );
 
 form.addEventListener('submit', e => e.preventDefault());
-main.addEventListener('click', e => accessFunction(e.target, e.target.name));
+main.addEventListener('click', ({ target }) =>
+	accessFunction(target, target.name)
+);
