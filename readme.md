@@ -20,4 +20,4 @@ Nesse projeto eu tive dois principais desafios: atualizar a tela em tempo real e
 
 ![Preview image](./images/desktop-preview.jpg)
 
-## **_[Clique aqui e teste o projeto](https://l-wendell.github.io/tip-calculator/)_**
+## **_[Clique aqui e teste o projeto](tip-calculator-l-wendell.vercel.app)_**
